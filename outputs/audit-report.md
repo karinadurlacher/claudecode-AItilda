@@ -1,8 +1,8 @@
 # Audit report
 
-Generated 2026-11-02 12:48 by scripts/verify-sources.ps1 | scope: All | network: doi.org, Crossref, NCBI E-utilities
+Generated 2026-11-02 12:57 by scripts/verify-sources.ps1 | scope: All | network: doi.org, Crossref, NCBI E-utilities
 
-**Result:** 0 FAIL, 13 WARN, 839 PASS across 51 records.
+**Result:** 0 FAIL, 13 WARN, 865 PASS across 51 records.
 
 ## Per record
 

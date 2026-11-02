@@ -28,7 +28,9 @@ To stop: write nothing to `sources/`, and reply with the specific problem and th
 2. Apply the date range, language, and study-type filters from `research-question.md`. Prefer relevance and study design first, recency where the scope asks for it. Journal impact is a secondary note only; never filter or rank on it alone, and never state an impact figure you did not retrieve.
 3. Tool limits: `get_article_metadata` returns very large output, so request at most 5 PMIDs per call. `find_related_articles` ignores result limits and returns IDs without dates, so fetch metadata and apply the date range before creating records. `search_articles` has no language filter, so check language per record. Avoid free-text terms that are ambiguous in PubMed (e.g., "tolerance"); prefer specific phrases or MeSH terms.
 4. Run several complementary queries (broad, then narrow, plus related-article expansion from strong hits). Stop when new queries return no new relevant candidates, or when you reach a sensible cap (about 100 candidates unless the orchestrator says otherwise).
-5. Log every run immediately after it is executed (see Outputs). If results were returned but not examined or recorded (cap, paging, unscreened related IDs), say so in the entry using a "Not reviewed:" line with counts or PMIDs, so partial coverage is visible.
+   Paging: if a query returns more hits than you retrieved, page with `retstart` until you reach the cap or the results stop being relevant, and record how many hits remain unretrieved. When you screen titles only, say in the log where the titles came from and list the PMIDs you dropped.
+5. Text integrity: if retrieved text contains corrupted characters (mojibake such as a Hebrew letter followed by a per-mille sign instead of a symbol), do not copy it into a record. Re-fetch from another source or flag the record. Write the retrieved abstract verbatim into the record's `Abstract` section.
+6. Log every run immediately after it is executed (see Outputs). If results were returned but not examined or recorded (cap, paging, unscreened related IDs), say so in the entry using a "Not reviewed:" line with counts or PMIDs, so partial coverage is visible.
 
 ## Verification at intake (required for every record)
 A paper may be recorded as `verified` only if all of these were read from retrieved sources, not recalled:
@@ -46,7 +48,7 @@ Rules:
 - If verification fails, set `verification_status: unverified` (or `partially-verified` with the gaps listed) and flag it. Do not drop it silently and do not treat it as valid evidence.
 
 ## Outputs
-- **Search log:** append to `sources/search-log.md`, never rewrite earlier entries. For each run record: run number, date (YYYY-MM-DD), tool/database, exact query string, filters, number of results returned, records created or updated, and notes.
+- **Search log:** append to `sources/search-log.md`, never rewrite earlier entries. For each run record: run number, date (YYYY-MM-DD), tool/database, exact query string (for a lookup run, the exact PMIDs or DOIs looked up), filters, number of results returned, records created or updated, and notes.
 - **Source records:** one file per paper at `sources/records/<record_id>.md`, using `templates/paper-record-template.md`. Use the PMID for `record_id` when available (`pmid-<number>`), otherwise a DOI-based slug. Before creating one, check for an existing record (same DOI or PMID); update it instead of duplicating.
 - Set `screening_status: candidate` for in-scope papers. Set `out-of-scope` only for items clearly outside `research-question.md` (wrong date, language, species, or study type) with a one-line reason tied to a criterion. All borderline items remain `candidate` for the evidence-reviewer.
 

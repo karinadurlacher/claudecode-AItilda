@@ -6,7 +6,7 @@
 > - **Partial full text:** 11 of the 26 had only partial full-text reading (targeted passages; results tables were not read). The remaining 1 (Garcia-Argibay 2026, PMID 42580811) was fully read (per `sources/screening-log.md`).
 > - **Unresolved records:** 3 records are unresolved and are NOT used as evidence: pmid-42888153, pmid-42747518, pmid-41804951 (see section 9).
 > - **Search coverage is partial:** Runs 1-7 on PubMed only; only the first 10-30 hits of each query were retrieved, and hundreds of hits were never reviewed (per-run counts in section 3).
-> - QC3 and QC4 (report checks) have not been run on this document.
+> - QC status (2026-11-02): QC1, QC3 and QC4 passed; QC2 passed after correcting the access-level labels of 11 records and recording the abstract population counts for PMID 42580811. `scripts/verify-sources.ps1` reports 0 FAIL (warnings are listed in `outputs/audit-report.md`). The label "DRAFT" stays because 14 of 26 studies are abstract-only, 3 records need a user ruling, the erratum for PMID 40983149 is unread, and the claim trace and table-versus-paper checks were done by hand on only 5 of the 26 studies.
 
 # Patient factors associated with treatment response, loss of response and clinical outcomes in ADHD: limited evidence synthesis
 

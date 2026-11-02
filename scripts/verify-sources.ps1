@@ -298,6 +298,7 @@ if (Test-Path $tablePath) {
   $rows = @()
   for ($i = 0; $i -lt $tl.Count - 1; $i++) {
     if ($tl[$i] -match '^\s*\|' -and $tl[$i + 1] -match '^\s*\|?\s*:?-{2,}') {
+      $hdrCells = @(($tl[$i].Trim().Trim('|') -split '\|') | ForEach-Object { $_.Trim() })
       $j = $i + 2
       while ($j -lt $tl.Count -and $tl[$j] -match '^\s*\|') { $rows += $tl[$j]; $j++ }
       break
@@ -315,6 +316,23 @@ if (Test-Path $tablePath) {
     if ($rec.Doi -and -not $rowText.Contains($rec.Doi)) { Add-Finding "table:$rid" 'table DOI' 'FAIL' ("row does not contain record DOI " + $rec.Doi) }
     elseif ($rec.Doi) { Add-Finding "table:$rid" 'table DOI' 'PASS' $rec.Doi }
     if ($rec.Pmid -and -not $rowText.Contains($rec.Pmid)) { Add-Finding "table:$rid" 'table PMID' 'FAIL' ("row does not contain record PMID " + $rec.Pmid) }
+    # access level in the record must agree with the table's basis column
+    $basisIdx = [array]::IndexOf($hdrCells, 'basis')
+    $accessM = [regex]::Match($rec.Text, '\*\*Access level seen:\*\*\s*(.+)')
+    if ($basisIdx -ge 0 -and $basisIdx -lt $cells.Count -and $accessM.Success) {
+      $basis = $cells[$basisIdx].ToLowerInvariant(); $access = $accessM.Groups[1].Value.ToLowerInvariant()
+      if ($basis -match 'full text' -and $access -match 'abstract only' -and $access -notmatch 'full text') { Add-Finding "table:$rid" 'access level vs basis' 'FAIL' ("table basis is '" + $cells[$basisIdx] + "' but record says '" + $accessM.Groups[1].Value.Trim() + "'") }
+      elseif ($basis -match 'abstract' -and $access -match 'full text' -and $access -notmatch 'abstract only') { Add-Finding "table:$rid" 'access level vs basis' 'FAIL' ("table basis is '" + $cells[$basisIdx] + "' but record says '" + $accessM.Groups[1].Value.Trim() + "'") }
+      else { Add-Finding "table:$rid" 'access level vs basis' 'PASS' $cells[$basisIdx] }
+    }
+    # every number in the row must occur in the record (no agent-computed values)
+    $recNoComma = $rec.Text -replace '(?<=\d),(?=\d{3})', ''
+    $rowMissing = @()
+    foreach ($nm in ([regex]::Matches(($rowText -replace 'https?://\S+|10\.\d{4,9}/\S+', ' '), '(?<![\w.])(\d{1,3}(,\d{3})+|\d+\.\d+|\d+%)(?![\w])') | ForEach-Object { $_.Value } | Sort-Object -Unique)) {
+      $plainNm = $nm -replace ',', ''
+      if (-not ($rec.Text.Contains($nm) -or $recNoComma.Contains($plainNm))) { $rowMissing += $nm }
+    }
+    if ($rowMissing.Count -gt 0) { Add-Finding "table:$rid" 'table numbers in record' 'WARN' ('numbers in table row not found in the record (agent-computed or mistyped?): ' + ($rowMissing -join ', ')) }
   }
   foreach ($rec in ($records | Where-Object { $_.Screening -eq 'included' })) {
     if ($tableIds -notcontains $rec.Id) { Add-Finding "table:$($rec.Id)" 'included record has table row' 'FAIL' 'included record missing from evidence table' }
