@@ -1,6 +1,6 @@
 # Audit report
 
-Generated 2026-11-02 13:17 by scripts/verify-sources.ps1 | scope: All | network: doi.org, Crossref, NCBI E-utilities
+Generated 2026-11-02 13:22 by scripts/verify-sources.ps1 | scope: All | network: doi.org, Crossref, NCBI E-utilities
 
 **Result:** 0 FAIL, 13 WARN, 865 PASS across 51 records.
 
@@ -49,7 +49,7 @@ Generated 2026-11-02 13:17 by scripts/verify-sources.ps1 | scope: All | network:
 | pmid-42664720 | excluded | PASS | 0 | 0 |
 | pmid-42675180 | included | PASS | 0 | 0 |
 | pmid-42679659 | excluded | PASS | 0 | 0 |
-| pmid-42747518 | uncertain | PASS | 0 | 0 |
+| pmid-42747518 | excluded | PASS | 0 | 0 |
 | pmid-42790052 | included | PASS | 0 | 0 |
 | pmid-42845572 | included | PASS | 0 | 0 |
 | pmid-42846244 | out-of-scope | PASS | 0 | 0 |

@@ -34,10 +34,10 @@ Generated 2026-11-02 by evidence-reviewer from sources/records/*.md. Bibliograph
 ## Excluded records, by criterion
 - Inclusion criterion 3 (no association between a patient factor and response/outcome): pmid-42679659 (planned weekend breaks of methylphenidate, treatment schedule only), pmid-42897516 (risperidone RCT, no predictor analysis), pmid-42614105 (network meta-analysis; only study-level moderators, excluded by user ruling 2026-11-02), pmid-42664720 (stimulant treatment trajectories as exposure), pmid-41446796 (pre/post MPH and control comparisons only), pmid-40929953 (systematic review of sensory outcomes, MPH vs unmedicated), pmid-42144137 (MDD vs prescribing patterns; outcomes compared by medication class), pmid-41902630 (PCIT vs other therapies). Several are borderline: 42679659, 42897516, 42664720, 41446796, 40929953, 42144137, 41902630.
 - Exclusion criterion 2 (no treatment-response or clinical-outcome measure): pmid-41173167 (outcome is rCBF response to MPH challenge). Borderline.
+- Inclusion criterion 2 (ADHD diagnosis not shown): pmid-42747518 (25-year community cohort of symptom trajectories; excluded by user ruling 2026-11-02).
 
 ## Uncertain records awaiting a decision
 - pmid-42888153 (narrative review of pharmacogenomic tests, pediatric): no study data; flagged narrative review per research-question.md, to be used only to locate primary studies unless ruled otherwise. Rechecked 2026-11-02, unchanged.
-- pmid-42747518 (25-year community cohort of ADHD symptom trajectories): ADHD diagnosis and treatment context not stated in abstract; ruling needed on whether such cohorts qualify.
 - pmid-41804951 (DMDD comorbidity, treatment patterns and outcomes, TriNetX): unclear whether a clinical outcome is analysed against DMDD; ruling needed on whether prescribing patterns count as an outcome (companion pmid-42144137 excluded on this point).
 
 ## Notes on evidence handling

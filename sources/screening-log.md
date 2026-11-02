@@ -5,11 +5,11 @@ Reviewer: evidence-reviewer | Date: 2026-11-02 | Criteria source: research-quest
 ## Running counts
 - Records screened by the reviewer (candidate at start of each pass): 38 (pass 1: 9; pass 2: 29), all verified
 - Included: 26
-- Excluded: 9 (Inclusion criterion 3: 8; Exclusion criterion 2: 1)
-- Uncertain: 3 (pmid-42888153 narrative review; pmid-42747518; pmid-41804951)
+- Excluded: 10 (Inclusion criterion 3: 8; Exclusion criterion 2: 1; Inclusion criterion 2: 1, pmid-42747518 by user ruling)
+- Uncertain: 2 (pmid-42888153 narrative review; pmid-41804951)
 - Blocked (not verified): 0
 - Not processed (screening_status out-of-scope, set by scout): 13 (42497408, 42534999, 42526162, 42625818, 42642740, 42846244, 42168718, 42149230, 42400277, 41896813, 41332541, 41058112, 40909826)
-- Check: 26 + 9 + 3 = 38 screened; 38 + 13 = 51 record files
+- Check: 26 + 10 + 2 = 38 screened; 38 + 13 = 51 record files
 - Included records with abstract-only evidence: 14 (42675180, 42873248, 42878250, 42595937, 42258584, 42863796, 42790052, 41107253, 40983149, 40879766, 42640016, 42517414, 42127382, 42084377). Included records with PMC full text accessed (targeted/partial passages, tables not read): 42392681, 42331561, 42940731, 41948089, 41655471, 41128391, 40712681, 42845572, 42528343, 41976997, 41906356; fully read earlier: 42580811.
 - Open flags: erratum for pmid-40983149 (content not retrievable); sample overlaps 41107253/40983149 (COMPAS) and 42863796/40712681 (NERF).
 
@@ -50,7 +50,7 @@ Reviewer: evidence-reviewer | Date: 2026-11-02 | Criteria source: research-quest
 | pmid-40929953 | excluded | Inclusion criterion 3: association between a patient factor and treatment response/clinical outcome | systematic review of sensory outcomes MPH vs unmedicated; no patient-factor analysis; no pharmacogenetic study found | abstract |
 | pmid-40879766 | included | meets inclusion 1-3 | early blood pressure response to first MPH dose predicts 6-month symptom reduction (n=171) | abstract |
 | pmid-40712681 | included | meets inclusion 1-3 | familial bipolar risk and baseline network connectivity and 12-week stimulant outcome (RCT); overlaps pmid-42863796 | full text (partial) |
-| pmid-42747518 | uncertain | Inclusion criterion 2 (ADHD diagnosis) not shown in abstract | community cohort of symptom trajectories from age 8 to 32; ADHD diagnosis and treatment context not stated; ruling needed | abstract |
+| pmid-42747518 | excluded | Inclusion criterion 2 (ADHD diagnosis) not shown in abstract | community cohort of symptom trajectories from age 8 to 32; ADHD diagnosis and treatment context not stated; user ruled 2026-11-02 to exclude (earlier: uncertain) | abstract |
 | pmid-42640016 | included | meets inclusion 1-3 | children with ADHD; baseline inattention predicts 4-year remission; treatment context not stated | abstract |
 | pmid-42845572 | included | meets inclusion 1-3 | Thai children; baseline age, sex, subtype, comorbidity, parenting analysed against improvement (no significant associations); abstract alone did not show this | full text (partial) |
 | pmid-42517414 | included | meets inclusion 1-3 | children 7-13; emotional dysregulation and executive function as predictors in MPH vs neurofeedback RCT (limited predictive value) | abstract |
