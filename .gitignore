@@ -1,0 +1,11 @@
+# Local Claude Code settings and machine-specific files
+.claude/settings.local.json
+
+# User's original prompt document (kept local)
+1st prompt karinas version.docx
+~$*.docx
+
+# Test outputs and temporary files
+*.DRAFT.docx
+*.DRAFT.xlsx
+*.tmp
