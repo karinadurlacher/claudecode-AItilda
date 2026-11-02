@@ -6,7 +6,7 @@
 > - **Partial full text:** 11 of the 26 had only partial full-text reading (targeted passages; results tables were not read). The remaining 1 (Garcia-Argibay 2026, PMID 42580811) was fully read (per `sources/screening-log.md`).
 > - **Unresolved records:** 3 records are unresolved and are NOT used as evidence: pmid-42888153, pmid-42747518, pmid-41804951 (see section 9).
 > - **Search coverage is partial:** Runs 1-7 on PubMed only; only the first 10-30 hits of each query were retrieved, and hundreds of hits were never reviewed (per-run counts in section 3).
-> - QC status (2026-11-02): QC1, QC3 and QC4 passed; QC2 passed after correcting the access-level labels of 11 records and recording the abstract population counts for PMID 42580811. `scripts/verify-sources.ps1` reports 0 FAIL (warnings are listed in `outputs/audit-report.md`). The label "DRAFT" stays because 14 of 26 studies are abstract-only, 3 records need a user ruling, the erratum for PMID 40983149 is unread, and the claim trace and table-versus-paper checks were done by hand on only 5 of the 26 studies.
+> - QC status (2026-11-02): QC1, QC3 and QC4 passed; QC2 passed after correcting the access-level labels of 11 records and recording the abstract population counts for PMID 42580811. `scripts/verify-sources.ps1` reports 0 FAIL (warnings are listed in `outputs/audit-report.md`). The label "DRAFT" stays because 14 of 26 studies are abstract-only, 3 records need a user ruling, the erratum for PMID 40983149 is still unreadable (the erratum notice is indexed in PubMed under its own identifier, recorded in the pmid-40983149 record), and table-versus-paper checking is partial: all 14 abstract-only rows had their decimals, percentages, and thousands-formatted numbers compared with the PubMed abstract by script (all matched), and 5 studies (PMIDs 42675180, 42580811, 42595937, 42873248, 42878250) were also checked by hand for claims. Numbers that come only from full text (for example PMIDs 41976997, 42528343, 42580811, 42845572) and plain counts such as sample sizes were not re-checked against the papers.
 
 # Patient factors associated with treatment response, loss of response and clinical outcomes in ADHD: limited evidence synthesis
 
@@ -208,7 +208,7 @@ The log does not give a combined total; counts are reported per run and are not 
 
 *Suggested next steps.*
 1. Obtain full texts for the 14 abstract-only studies and read the results tables of the 11 partially read ones; complete appraisal.
-2. Retrieve and read the erratum for PMID 40983149 (10.1016/j.bpsc.2025.12.006).
+2. Retrieve and read the erratum for PMID 40983149 (10.1016/j.bpsc.2025.12.006; listed in PubMed as a Published Erratum notice, not a study). Rechecked 2026-11-02: PubMed, Crossref and the publisher redirect give no notice text, so it needs manual access through the journal site.
 3. Verify whether the Swedish, Norwegian and multinational registers overlap (PMIDs 42580811, 42331561, 42392681).
 4. Resolve the three unresolved records (section 9) by user ruling.
 5. Continue the search beyond the first 10-30 hits per query, add databases, and date-screen the Run 3 related-article list.

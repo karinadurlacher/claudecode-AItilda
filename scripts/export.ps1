@@ -58,8 +58,14 @@ $xlsxPath = Join-Path $OutDir ('evidence-table' + $suffix + '.xlsx')
 function Esc([string]$s) { return [System.Security.SecurityElement]::Escape($s) }
 
 function New-Zip([string]$path, $entries) {
-  if (Test-Path $path) { Remove-Item $path -Force }
-  $fs = [IO.File]::Open($path, [IO.FileMode]::Create)
+  # FileMode Create truncates an existing file, so no delete is needed (deleting can fail while OneDrive or a previewer holds the file)
+  if (Test-Path $path) {
+    # reuse the existing file (open + truncate): FileMode Create and Remove-Item can be denied here
+    $fs = [IO.File]::Open($path, [IO.FileMode]::Open, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+    $fs.SetLength(0)
+  } else {
+    $fs = [IO.File]::Open($path, [IO.FileMode]::Create)
+  }
   $zip = New-Object IO.Compression.ZipArchive($fs, [IO.Compression.ZipArchiveMode]::Create)
   foreach ($name in $entries.Keys) {
     $e = $zip.CreateEntry($name)
